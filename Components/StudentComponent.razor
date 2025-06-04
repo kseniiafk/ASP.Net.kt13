@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<div class="student-card">
+    <h3>Student Information</h3>
+    <p>Name: @Name</p>
+    <p>Age: @Age</p>
+
+    <button @onclick="IncrementAge" class="btn btn-primary">Increase Age</button>
+    <button @onclick="ResetAge" class="btn btn-secondary">Reset Age</button>
+</div>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public int Age { get; set; }
+
+    private int initialAge;
+
+    protected override void OnInitialized()
+    {
+        initialAge = Age;
+        base.OnInitialized();
+    }
+
+    private void IncrementAge()
+    {
+        Age++;
+    }
+
+    private void ResetAge()
+    {
+        Age = initialAge;
+    }
+}
